@@ -87,3 +87,25 @@ export const verifyToken = async (req, res, next) => {
     });
   }
 };
+
+export const verifyTokenOptional = (req, res, next) => {
+  const token = req.cookies?.token;
+
+  if (!token) {
+    req.user = null;
+    return next();
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+    req.user = {
+      _id: decoded._id,
+    };
+
+    return next();
+  } catch {
+    req.user = null;
+    return next();
+  }
+};
