@@ -10,10 +10,6 @@ const AnalysisRecordSchema = new mongoose.Schema(
     imageUrl: { type: String, required: true },
     imageHash: { type: String, required: true },
     imageSize: { type: Number, required: true },
-    imageDimensions: {
-      width: { type: Number, required: true },
-      height: { type: Number, required: true },
-    },
     analysisResult: {
       aiProbability: { type: Number, required: true },
       label: {
