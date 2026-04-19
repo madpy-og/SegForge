@@ -1,6 +1,6 @@
 import express from "express";
-import { getSignature } from "../controllers/cloudinaryController";
-import { verifyTokenOptional } from "../middlewares/authMiddleware";
+import { getSignature } from "../controllers/cloudinaryController.js";
+import { verifyTokenOptional } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
