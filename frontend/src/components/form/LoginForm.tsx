@@ -32,7 +32,7 @@ const LoginForm = ({ form, handleSubmit }: Props) => {
           <input
             id="email"
             type="email"
-            placeholder="maddaathiarahman@gmail.com"
+            placeholder="madda.athiarahman@gmail.com"
             {...form.register("email")}
             className="input-box"
           />

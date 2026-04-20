@@ -66,7 +66,7 @@ const RegisterForm = ({ form, handleSubmit }: Props) => {
       <p className="text-bs-m md:text-bs text-cuslightblack ">
         Sudah memiliki akun?{" "}
         <span className="text-bs-m md:text-bs text-cusblack hover:text-cusblack/90 font-semibold underline">
-          <Link to="/register">Sign In</Link>
+          <Link to="/login">Sign In</Link>
         </span>
       </p>
     </section>
