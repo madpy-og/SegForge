@@ -2,8 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { type LoginSchema, loginSchema } from "../schemas/input/LoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router";
-import SegForge from "../components/SegForge";
 import LoginForm from "../components/form/LoginForm";
 
 const Login = () => {
