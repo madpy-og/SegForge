@@ -6,6 +6,8 @@ import {
   registerSchema,
 } from "../schemas/input/RegisterSchema";
 import RegisterForm from "../components/form/RegisterForm";
+import { register } from "../api/authApi";
+import { useNavigate } from "react-router";
 
 const Register = () => {
   const form = useForm({
@@ -17,9 +19,17 @@ const Register = () => {
     },
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (value: RegisterSchema) => {
     try {
-    } catch (error) {}
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await register(value);
+
+      navigate("/login");
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <main className="flex flex-col items-center justify-center min-h-screen">

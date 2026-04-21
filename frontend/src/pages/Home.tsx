@@ -1,6 +1,10 @@
 import React from "react";
 
-const Home = () => {
+type Props = {
+  isAuthenticated: boolean;
+};
+
+const Home = ({ isAuthenticated }: Props) => {
   return <div></div>;
 };
 
