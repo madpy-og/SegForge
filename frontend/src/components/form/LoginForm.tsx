@@ -1,5 +1,5 @@
 import React from "react";
-import SegForge from "../SegForge";
+import SegForge from "../Badge";
 import { Link } from "react-router";
 import type { UseFormReturn } from "react-hook-form";
 import type { LoginSchema } from "../../schemas/input/LoginSchema";

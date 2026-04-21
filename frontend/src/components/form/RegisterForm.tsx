@@ -1,8 +1,8 @@
 import React from "react";
 import type { RegisterSchema } from "../../schemas/input/RegisterSchema";
 import { Link } from "react-router";
-import SegForge from "../SegForge";
 import type { UseFormReturn } from "react-hook-form";
+import Badge from "../Badge";
 
 type Props = {
   form: UseFormReturn<RegisterSchema>;
@@ -17,7 +17,7 @@ const RegisterForm = ({ form, handleSubmit }: Props) => {
         className="flex flex-col gap-4 w-90 md:w-100 p-4"
       >
         <div className="flex flex-col items-center justify-center text-center mb-4">
-          <SegForge />
+          <Badge value="SegForge" variant="primary" />
           <h2 className="text-h2-m md:text-h2 text-cusblack font-bold">
             Selamat Datang
           </h2>
