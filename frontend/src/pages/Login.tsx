@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { type LoginSchema, loginSchema } from "../schemas/input/LoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LoginForm from "../components/form/LoginForm";
+import { login } from "../api/authApi.ts";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const form = useForm({
@@ -13,9 +15,17 @@ const Login = () => {
     },
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (value: LoginSchema) => {
     try {
-    } catch (error) {}
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await login(value);
+
+      navigate("/");
+    } catch (error) {
+      console.error("Failed to login");
+    }
   };
 
   return (
