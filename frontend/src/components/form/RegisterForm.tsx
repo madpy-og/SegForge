@@ -61,7 +61,9 @@ const RegisterForm = ({ form, handleSubmit }: Props) => {
             className="input-box"
           />
         </div>
-        <button className="primary-button mt-6">Sign Up</button>
+        <button className="primary-button rounded-md text-bd-m md:text-bd w-full h-10 md:h-12 mt-6">
+          Sign Up
+        </button>
       </form>
       <p className="text-bs-m md:text-bs text-cuslightblack ">
         Sudah memiliki akun?{" "}

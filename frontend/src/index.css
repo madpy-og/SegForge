@@ -51,5 +51,9 @@ html {
 }
 
 .primary-button {
-  @apply w-full h-10 md:h-12 text-center text-bd-m md:text-bd text-cuswhite bg-cusblack hover:bg-cusblack/90 rounded-md cursor-pointer transition;
+  @apply text-center text-cuswhite bg-cusblack hover:bg-cusblack/90 cursor-pointer transition;
+}
+
+.outline-button {
+  @apply text-center text-cusblack border border-cusdarkgrey hover:bg-cusgrey cursor-pointer transition;
 }

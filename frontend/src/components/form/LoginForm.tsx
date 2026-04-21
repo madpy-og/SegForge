@@ -49,7 +49,9 @@ const LoginForm = ({ form, handleSubmit }: Props) => {
             className="input-box"
           />
         </div>
-        <button className="primary-button mt-6">Sign In</button>
+        <button className="primary-button rounded-md text-bd-m md:text-bd w-full h-10 md:h-12 mt-6">
+          Sign In
+        </button>
       </form>
       <p className="text-bs-m md:text-bs text-cuslightblack ">
         Belum memiliki akun?{" "}

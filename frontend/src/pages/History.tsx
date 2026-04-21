@@ -5,7 +5,7 @@ type Props = {
   isAuthenticated: boolean;
 };
 
-const Home = ({ isAuthenticated }: Props) => {
+const History = ({ isAuthenticated }: Props) => {
   return (
     <>
       <Navbar isAuthenticated={isAuthenticated} />
@@ -14,4 +14,4 @@ const Home = ({ isAuthenticated }: Props) => {
   );
 };
 
-export default Home;
+export default History;
