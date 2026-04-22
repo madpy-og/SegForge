@@ -25,7 +25,7 @@ connectDB();
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/analyze", analyzeRoutes);
-app.use("/api/v1/signature", cloudinaryRoutes);
+app.use("/api/v1/cloudinary", cloudinaryRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server Running on Port ${PORT}`));

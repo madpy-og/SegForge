@@ -1,8 +1,8 @@
 import React from "react";
-import SegForge from "../Badge";
 import { Link } from "react-router";
 import type { UseFormReturn } from "react-hook-form";
 import type { LoginSchema } from "../../schemas/input/LoginSchema";
+import Badge from "../Badge";
 
 type Props = {
   form: UseFormReturn<LoginSchema>;
@@ -17,7 +17,7 @@ const LoginForm = ({ form, handleSubmit }: Props) => {
         className="flex flex-col gap-4 w-90 md:w-100 p-4"
       >
         <div className="flex flex-col items-center justify-center text-center mb-4">
-          <SegForge />
+          <Badge value="Segforge" variant="primary" />
           <h2 className="text-h2-m md:text-h2 text-cusblack font-bold">
             Selamat Datang
           </h2>

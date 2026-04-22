@@ -4,6 +4,6 @@ import { verifyTokenOptional } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", verifyTokenOptional, getSignature);
+router.post("/signature", verifyTokenOptional, getSignature);
 
 export default router;
