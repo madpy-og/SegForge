@@ -6,7 +6,7 @@ const UPLOAD_CONFIG = {
   image: {
     getFolder: (userId) =>
       userId ? `segforge/image/users/${userId}` : `segforge/image/guests`,
-    maxSize: 2 * 1024 * 1024,
+    maxSize: 5 * 1024 * 1024,
   },
 };
 
