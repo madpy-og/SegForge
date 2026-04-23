@@ -11,9 +11,9 @@ const Navbar = ({ isAuthenticated }: Props) => {
 
   const handleLogout = async () => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
       await logout();
+
+      navigate("/login");
     } catch (error) {
       console.error(error);
     }

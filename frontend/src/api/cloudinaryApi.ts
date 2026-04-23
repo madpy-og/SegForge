@@ -1,3 +1,5 @@
+import type { UploadSchema } from "../schemas/input/UploadSchema";
+
 const getSignature = async (
   fileType: string,
   fileSize: number,
@@ -29,16 +31,23 @@ const getSignature = async (
   }
 };
 
-export const uploadToCloudinary = async (file: File, uploadType: string) => {
+export const uploadToCloudinary = async (
+  { image }: UploadSchema,
+  uploadType: string,
+) => {
   try {
-    const signatureData = await getSignature(file.type, file.size, uploadType);
+    const signatureData = await getSignature(
+      image.type,
+      image.size,
+      uploadType,
+    );
 
     if (!signatureData) {
       throw new Error("Failed to get signature");
     }
 
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("file", image);
     formData.append("signature", signatureData.signature);
     formData.append("timestamp", String(signatureData.timestamp));
     formData.append("api_key", signatureData.apiKey);

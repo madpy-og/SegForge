@@ -1,13 +1,39 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Badge from "../components/Badge";
-import Card from "../components/Card";
+import AnalysisForm from "../components/form/AnalysisForm";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { uploadSchema, type UploadSchema } from "../schemas/input/UploadSchema";
+import { uploadToCloudinary } from "../api/cloudinaryApi";
+import { analyze } from "../api/analyzeApi";
 
 type Props = {
   isAuthenticated: boolean;
 };
 
 const Home = ({ isAuthenticated }: Props) => {
+  const form = useForm<UploadSchema>({
+    resolver: zodResolver(uploadSchema),
+  });
+
+  const handleSubmit = async (value: UploadSchema) => {
+    try {
+      const uploadData = await uploadToCloudinary(value, "image");
+
+      if (!uploadData) {
+        console.log("Failed to upload image");
+        return;
+      }
+
+      const analyzeData = await analyze(uploadData.imageUrl);
+
+      if (!analyzeData) {
+        console.log("Failed to analyze image");
+        return;
+      }
+    } catch (error) {}
+  };
   return (
     <>
       <Navbar isAuthenticated={isAuthenticated} />
@@ -26,6 +52,7 @@ const Home = ({ isAuthenticated }: Props) => {
               Unggah gambar dan dapatkan hasil analisis dalam hitungan detik
             </p>
           </div>
+          <AnalysisForm form={form} handleSubmit={handleSubmit} />
         </section>
       </main>
     </>

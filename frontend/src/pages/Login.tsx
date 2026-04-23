@@ -6,7 +6,11 @@ import LoginForm from "../components/form/LoginForm";
 import { login } from "../api/authApi.ts";
 import { useNavigate } from "react-router";
 
-const Login = () => {
+type Props = {
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Login = ({ setIsAuthenticated }: Props) => {
   const form = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -21,6 +25,8 @@ const Login = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       await login(value);
+
+      setIsAuthenticated(true);
 
       navigate("/");
     } catch (error) {

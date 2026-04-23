@@ -9,22 +9,19 @@ import History from "../pages/History";
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    const check = async () => {
-      const result = await checkAuth();
-
-      setIsAuthenticated(result);
-    };
-
-    check();
-  }, []);
   return (
     <div className="min-h-screen bg-cusgrey">
       <Routes>
         <Route path="/" element={<Home isAuthenticated={isAuthenticated} />} />
-        <Route path="/history" element={<History isAuthenticated={isAuthenticated} />} />
+        <Route
+          path="/history"
+          element={<History isAuthenticated={isAuthenticated} />}
+        />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login setIsAuthenticated={setIsAuthenticated} />}
+        />
       </Routes>
     </div>
   );
