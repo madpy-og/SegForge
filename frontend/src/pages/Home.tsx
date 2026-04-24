@@ -32,7 +32,9 @@ const Home = ({ isAuthenticated }: Props) => {
         console.log("Failed to analyze image");
         return;
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <>

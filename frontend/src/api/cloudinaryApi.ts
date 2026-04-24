@@ -7,7 +7,7 @@ const getSignature = async (
 ) => {
   try {
     const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/cloudinary/signature`,
+      `${import.meta.env.VITE_BASE_URL}/cloudinary/signature`,
       {
         method: "POST",
         credentials: "include",

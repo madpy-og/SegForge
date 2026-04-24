@@ -28,6 +28,9 @@ export const analyzeImage = async (req, res) => {
 
     res.status(201).json(record);
   } catch (error) {
-    res.status(500).json({ message: "internal server error" });
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "internal server error", error: error.message });
   }
 };
