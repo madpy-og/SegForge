@@ -21,7 +21,7 @@ const Navbar = ({ isAuthenticated }: Props) => {
   return (
     <header className="fixed top-0 w-full shadow-[0px_2px_4px_-3px_rgba(0,0,0,0.3)]">
       <nav className="w-full flex items-center justify-between bg-cuswhite px-10 py-4">
-        <div className="text-cusblack font-bold ">SegForge</div>
+        <div className="text-cusblack font-bold">SegForge</div>
         <ul className="flex items-center justify-center gap-6 text-bs-m md:text-bs">
           <li>
             <NavLink

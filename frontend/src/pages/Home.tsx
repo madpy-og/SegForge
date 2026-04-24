@@ -37,7 +37,7 @@ const Home = ({ isAuthenticated }: Props) => {
   return (
     <>
       <Navbar isAuthenticated={isAuthenticated} />
-      <main className="pt-30">
+      <main className="pt-30 pb-20">
         <section className="flex flex-col items-center justify-center gap-6">
           <div className="flex flex-col items-center justify-center gap-6">
             <div className="w-50">
@@ -52,7 +52,9 @@ const Home = ({ isAuthenticated }: Props) => {
               Unggah gambar dan dapatkan hasil analisis dalam hitungan detik
             </p>
           </div>
-          <AnalysisForm form={form} handleSubmit={handleSubmit} />
+          <div className="w-220 h-100 flex flex-col items-center justify-center gap-4 bg-cuswhite rounded-md shadow-[2px_2px_4px_-3px_rgba(0,0,0,0.3)]">
+            <AnalysisForm form={form} handleSubmit={handleSubmit} />
+          </div>
         </section>
       </main>
     </>

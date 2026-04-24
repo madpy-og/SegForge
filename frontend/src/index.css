@@ -54,6 +54,10 @@ html {
   @apply text-center text-cuswhite bg-cusblack hover:bg-cusblack/90 cursor-pointer transition;
 }
 
+.secondary-button {
+  @apply text-center text-cusblack bg-cusdarkgrey/30 hover:bg-cusdarkgrey/50 cursor-pointer transition;
+}
+
 .outline-button {
   @apply text-center text-cusblack border border-cusdarkgrey hover:bg-cusgrey cursor-pointer transition;
 }
