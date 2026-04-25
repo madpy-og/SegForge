@@ -55,7 +55,7 @@ html {
 }
 
 .secondary-button {
-  @apply text-center text-cusblack bg-cusdarkgrey/30 hover:bg-cusdarkgrey/50 cursor-pointer transition;
+  @apply text-center text-cusblack bg-cusdarkgrey/20 hover:bg-cusdarkgrey/30 cursor-pointer transition;
 }
 
 .outline-button {

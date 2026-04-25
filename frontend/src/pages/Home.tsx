@@ -45,7 +45,7 @@ const Home = ({ isAuthenticated }: Props) => {
             <div className="w-50">
               <Badge value="100% Gratis dan Otomatis" variant="secondary" />
             </div>
-            <h1 className="text-center text-h1-m md:text-[60px] leading-15 text-cusblack font-bold">
+            <h1 className="text-center text-[60px] md:text-[70px] leading-18 text-cusblack font-bold">
               Deteksi Gambar AI
               <br />
               dalam Sekejap

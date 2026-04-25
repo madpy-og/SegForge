@@ -1,8 +1,7 @@
-import React from "react";
-import Card from "../Card";
+import React, { useState } from "react";
 import type { UploadSchema } from "../../schemas/input/UploadSchema";
 import type { UseFormReturn } from "react-hook-form";
-import { File, FileImage, Image } from "lucide-react";
+import { CloudDownload } from "lucide-react";
 
 type Props = {
   form: UseFormReturn<UploadSchema>;
@@ -10,6 +9,7 @@ type Props = {
 };
 
 const AnalysisForm = ({ form, handleSubmit }: Props) => {
+  const [fileName, setFileName] = useState("");
   return (
     <>
       <form
@@ -25,6 +25,7 @@ const AnalysisForm = ({ form, handleSubmit }: Props) => {
             if (!file) return;
 
             form.setValue("image", file, { shouldValidate: true });
+            setFileName(file.name);
           }}
           className="w-full flex flex-col items-center justify-center gap-4"
         >
@@ -32,7 +33,7 @@ const AnalysisForm = ({ form, handleSubmit }: Props) => {
             htmlFor="file"
             className="flex items-center justify-center secondary-button text-bs-m md:text-bs p-4 rounded-md"
           >
-            <FileImage size={28} strokeWidth={2} />
+            <CloudDownload size={28} strokeWidth={2} />
           </label>
           <input
             type="file"
@@ -44,13 +45,19 @@ const AnalysisForm = ({ form, handleSubmit }: Props) => {
               if (!file) return;
 
               form.setValue("image", file, { shouldValidate: true });
+              setFileName(file.name);
             }}
           />
           <div className="flex flex-col items-center justify-center text-center gap-1">
+            <p
+              className={`text-bs-m md:text-bs text-cusdarkgrey ${fileName ? "flex justify-center items-center" : "hidden"}`}
+            >
+              {fileName}
+            </p>
             <p className="text-bd-m md:text-bd text-cusblack font-semibold">
               Seret atau klik untuk unggah gambar
             </p>
-            <p className="text-bs-m md:text-bs text-cusdarkgrey font-semibold">
+            <p className="text-bs-m md:text-bs text-cusdarkgrey">
               Format JPEG, PNG, WEBP, dan ukuran maksimal 5 MB
             </p>
           </div>
@@ -58,7 +65,7 @@ const AnalysisForm = ({ form, handleSubmit }: Props) => {
       </form>
       <button
         form="analysis-form"
-        className=" primary-button text-bs-m md:text-bs py-1 px-4 rounded-md"
+        className=" primary-button text-bs-m md:text-bs py-2 px-4 rounded-md"
       >
         Mulai Deteksi
       </button>
