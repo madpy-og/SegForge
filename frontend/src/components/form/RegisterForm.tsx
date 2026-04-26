@@ -36,6 +36,11 @@ const RegisterForm = ({ form, handleSubmit }: Props) => {
             {...form.register("fullname")}
             className="input-box"
           />
+          {form.formState.errors.fullname && (
+            <p className="text-bs-m md:text-bs text-danger">
+              {form.formState.errors.fullname.message}
+            </p>
+          )}
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="email" className="label-input">
@@ -48,6 +53,11 @@ const RegisterForm = ({ form, handleSubmit }: Props) => {
             {...form.register("email")}
             className="input-box"
           />
+          {form.formState.errors.email && (
+            <p className="text-bs-m md:text-bs text-danger">
+              {form.formState.errors.email.message}
+            </p>
+          )}
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="password" className="label-input">
@@ -60,6 +70,11 @@ const RegisterForm = ({ form, handleSubmit }: Props) => {
             {...form.register("password")}
             className="input-box"
           />
+          {form.formState.errors.password && (
+            <p className="text-bs-m md:text-bs text-danger">
+              {form.formState.errors.password.message}
+            </p>
+          )}
         </div>
         <button className="primary-button rounded-md text-bd-m md:text-bd w-full h-10 md:h-12 mt-6">
           Sign Up

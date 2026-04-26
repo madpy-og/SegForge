@@ -18,6 +18,7 @@ const Home = ({ isAuthenticated }: Props) => {
   });
 
   const handleSubmit = async (value: UploadSchema) => {
+    console.log("SUBMIT MASUK", value);
     try {
       const uploadData = await uploadToCloudinary(value, "image");
 
