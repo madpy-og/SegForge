@@ -7,6 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { uploadSchema, type UploadSchema } from "../schemas/input/UploadSchema";
 import { uploadToCloudinary } from "../api/cloudinaryApi";
 import { analyze } from "../api/analyzeApi";
+import MainSection from "../components/sections/MainSection";
+import HowSection from "../components/sections/HowSection";
 
 type Props = {
   isAuthenticated: boolean;
@@ -40,25 +42,9 @@ const Home = ({ isAuthenticated }: Props) => {
   return (
     <>
       <Navbar isAuthenticated={isAuthenticated} />
-      <main className="pt-30 pb-20">
-        <section className="flex flex-col items-center justify-center gap-6">
-          <div className="flex flex-col items-center justify-center gap-6">
-            <div className="w-50">
-              <Badge value="100% Gratis dan Otomatis" variant="secondary" />
-            </div>
-            <h1 className="text-center text-[60px] md:text-[70px] leading-18 text-cusblack font-bold">
-              Deteksi Gambar AI
-              <br />
-              dalam Sekejap
-            </h1>
-            <p className="text-bd-m md:text-bd text-cuslightblack">
-              Unggah gambar dan dapatkan hasil analisis dalam hitungan detik
-            </p>
-          </div>
-          <div className="w-220 h-100 flex flex-col items-center justify-center gap-4 bg-cuswhite rounded-md shadow-[2px_2px_4px_-3px_rgba(0,0,0,0.3)]">
-            <AnalysisForm form={form} handleSubmit={handleSubmit} />
-          </div>
-        </section>
+      <main className="pt-30">
+        <MainSection form={form} handleSubmit={handleSubmit} />
+        <HowSection />
       </main>
     </>
   );
