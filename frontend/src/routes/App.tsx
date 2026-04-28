@@ -8,6 +8,21 @@ import History from "../pages/History";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
+
+  useEffect(() => {
+    const verifyAuth = async () => {
+      const isAuth = await checkAuth();
+      setIsAuthenticated(isAuth);
+      setIsAuthLoading(false);
+    };
+
+    verifyAuth();
+  }, []);
+
+  if (isAuthLoading) {
+    return <div className="min-h-screen bg-cusgrey flex items-center justify-center"></div>;
+  }
 
   return (
     <div className="min-h-screen bg-cusgrey">
