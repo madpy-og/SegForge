@@ -29,7 +29,11 @@ const Navbar = ({ isAuthenticated }: Props) => {
             <NavLink
               to="/"
               end
-              className={({ isActive }) => (isActive ? "" : "")}
+              className={({ isActive }) =>
+                isActive
+                  ? "underline underline-offset-4 font-semibold"
+                  : "hover:underline hover:underline-offset-4 hover:font-semibold transition"
+              }
             >
               Beranda
             </NavLink>
@@ -38,7 +42,11 @@ const Navbar = ({ isAuthenticated }: Props) => {
             <NavLink
               to="/history"
               end
-              className={({ isActive }) => (isActive ? "" : "")}
+              className={({ isActive }) =>
+                isActive
+                  ? "underline underline-offset-4 font-semibold "
+                  : "hover:underline hover:underline-offset-4 hover:font-semibold transition"
+              }
             >
               Riwayat
             </NavLink>

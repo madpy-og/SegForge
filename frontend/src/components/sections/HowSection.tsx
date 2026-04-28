@@ -8,10 +8,10 @@ const HowSection = () => {
       <h1 className="text-center text-[32px] md:text-[60px] leading-10 md:leading-20 text-cusblack font-bold">
         Bagaimana Sistem Bekerja
       </h1>
-      <div className="w-full px-4 md:px-24 grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="h-50 md:h-60 flex flex-col p-6 items-start justify-between bg-cusblack text-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)]">
+      <div className="w-full px-4 md:px-18 lg:px-24 grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="h-50 md:h-60 flex flex-col p-6 items-start justify-between bg-cusblack text-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)] overflow-hidden">
           <Search />
-          <div className="flex flex-col items-start justify-between gap-1">
+          <div className="flex flex-col items-start justify-between gap-1 o">
             <h5 className="text-h5-m md:text-h5 font-bold">
               Analisis Visual Cerdas
             </h5>
