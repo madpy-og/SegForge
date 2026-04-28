@@ -1,44 +1,53 @@
 import React from "react";
 import Card from "../Card";
-import { Scroll } from "lucide-react";
+import { Image, Search, Timer } from "lucide-react";
 
 const HowSection = () => {
   return (
-    <section className="w-full h-200 mt-20 flex flex-col items-center justify-center gap-5 bg-cusdarkgrey/10">
-      <h1 className="text-center text-[40px] md:text-[50px] text-cusblack font-bold">
+    <section className="w-full pt-10 md:pt-30 pb-15 md:pb-35 mt-20 flex flex-col items-center justify-center gap-7 md:gap-5 bg-cusdarkgrey/10">
+      <h1 className="text-center text-[32px] md:text-[60px] leading-10 md:leading-20 text-cusblack font-bold">
         Bagaimana Sistem Bekerja
       </h1>
-      <div className="w-full px-16 grid grid-cols-3 gap-10">
-        <Card className="flex flex-col p-10 items-start justify-around bg-cusblack text-cuswhite ">
-          <Scroll />
-          <h6 className="text-bl-m md:text-bl font-semibold">
-            Analisis Visual Cerdas
-          </h6>
-          <p className="text-bs-m md:text-bs ">
-            Sistem menganalisis pola, tekstur, dan detail visual untuk
-            mendeteksi tanda tanda gambar buatan AI
-          </p>
-        </Card>
-        <Card className="flex flex-col p-10 items-start justify-around bg-cuswhite text-cuslightblack">
-          <Scroll />
-          <h6 className="text-bl-m md:text-bl font-semibold">
-            Deteksi Gambar AI
-          </h6>
-          <p className="text-bs-m md:text-bs ">
-            Mengidentifikasi apakah gambar merupakan hasil generate AI atau
-            telah dimanipulasi secara digital
-          </p>
-        </Card>
-        <Card className="flex flex-col p-10 items-start justify-around gap-5 bg-cusblack text-cuswhite">
-          <Scroll />
-          <h6 className="text-bl-m md:text-bl font-semibold">
-            Hasil dalam Sekejap
-          </h6>
-          <p className="text-bs-m md:text-bs ">
-            Dapatkan hasil analisis lengkap dengan persentasi tingkat keaslian
-            dalam hitungan detik
-          </p>
-        </Card>
+      <div className="w-full px-4 md:px-24 grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="h-50 md:h-60 flex flex-col p-6 items-start justify-between bg-cusblack text-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)]">
+          <Search />
+          <div className="flex flex-col items-start justify-between gap-1">
+            <h5 className="text-h5-m md:text-h5 font-bold">
+              Analisis Visual Cerdas
+            </h5>
+            <p className="text-bs-m md:text-bs ">
+              Menganalisis pola visual, tekstur permukaan, serta detail-detail
+              kecil pada gambar secara mendalam untuk mendeteksi adanya
+              tanda-tanda gambar yang dihasilkan oleh kecerdasan buatan.
+            </p>
+          </div>
+        </div>
+        <div className="h-50 md:h-60 flex flex-col p-6 items-start justify-between bg-cuswhite text-cusblack rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)]">
+          <Image />
+          <div className="flex flex-col items-start justify-between gap-1">
+            <h5 className="text-h5-m md:text-h5 font-bold">
+              Deteksi Gambar AI
+            </h5>
+            <p className="text-bs-m md:text-bs ">
+              Mengidentifikasi gambar dengan akurat apakah suatu gambar
+              merupakan hasil generate dari AI atau telah mengalami proses
+              manipulasi digital menggunakan berbagai teknik pengolahan gambar.
+            </p>
+          </div>
+        </div>
+        <div className="h-50 md:h-60 flex flex-col p-6 items-start justify-between bg-cusblack text-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)]">
+          <Timer />
+          <div className="flex flex-col items-start justify-between gap-1">
+            <h5 className="text-h5-m md:text-h5 font-bold">
+              Hasil dalam Sekejap
+            </h5>
+            <p className="text-bs-m md:text-bs ">
+              Pengguna akan mendapatkan hasil analisis secara lengkap yang
+              mencakup tingkat keaslian gambar dalam bentuk persentase yang
+              dihitung secara otomatis hanya dalam hitungan detik.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

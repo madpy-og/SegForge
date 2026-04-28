@@ -36,9 +36,9 @@ const AnalysisForm = ({ form, handleSubmit }: Props) => {
         >
           <label
             htmlFor="file"
-            className="flex items-center justify-center secondary-button text-bs-m md:text-bs p-4 rounded-md cursor-pointer"
+            className="flex items-center justify-center secondary-button text-bs-m md:text-bs p-3 md:p-4 rounded-md cursor-pointer"
           >
-            <CloudDownload size={28} strokeWidth={2} />
+            <CloudDownload strokeWidth={2} className="w-7 md:w-8 h-7 md:h-8" />
           </label>
 
           <input

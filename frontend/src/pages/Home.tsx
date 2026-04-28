@@ -42,7 +42,7 @@ const Home = ({ isAuthenticated }: Props) => {
   return (
     <>
       <Navbar isAuthenticated={isAuthenticated} />
-      <main className="pt-30">
+      <main className="pt-25 md:pt-30 grid grid-cols-1">
         <MainSection form={form} handleSubmit={handleSubmit} />
         <HowSection />
       </main>
