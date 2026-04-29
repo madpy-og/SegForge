@@ -3,14 +3,23 @@ import HistoryItem from "./HistoryItem";
 import type { AnalysisRecordSchema } from "../schemas/entities/AnalysisRecord";
 
 type Props = {
-  analysisRecord: AnalysisRecordSchema;
+  analysisRecord: AnalysisRecordSchema[];
 };
 
 const HistoryList = ({ analysisRecord }: Props) => {
   return (
-    <div className="w-full mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
-      <HistoryItem analysisRecord={analysisRecord} />
-    </div>
+    <>
+      {analysisRecord.map((r) => {
+        return (
+          <HistoryItem
+            key={r.userId}
+            imageUrl={r.imageUrl}
+            aiProbability={r.analysisResult.aiProbability}
+            createdAt={r.createdAt}
+          />
+        );
+      })}
+    </>
   );
 };
 

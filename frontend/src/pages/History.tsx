@@ -1,14 +1,16 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { Navigate } from "react-router";
-import { type AnalysisRecordSchema } from "../schemas/entities/AnalysisRecord";
 import HistoryList from "../components/HistoryList";
+import { useAnalysisRecord } from "../hooks/useAnalysisRecord";
 
 type Props = {
   isAuthenticated: boolean;
 };
 
 const History = ({ isAuthenticated }: Props) => {
+  const { analysisRecord, refetchAnalysisRecordData } = useAnalysisRecord();
+
   if (isAuthenticated === true) {
     return (
       <>
@@ -21,7 +23,11 @@ const History = ({ isAuthenticated }: Props) => {
             <p className="text-bd-m md:text-bd text-cuslightblack">
               Lihat riwayat hasil analisis gambar anda
             </p>
-            <HistoryList analysisRecord={} />
+            <div className="w-full mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+              {analysisRecord ? (
+                <HistoryList analysisRecord={analysisRecord} />
+              ) : null}
+            </div>
           </section>
         </main>
       </>
