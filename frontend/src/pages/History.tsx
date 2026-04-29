@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { Navigate } from "react-router";
+import { type AnalysisRecordSchema } from "../schemas/entities/AnalysisRecord";
+import HistoryList from "../components/HistoryList";
 
 type Props = {
   isAuthenticated: boolean;
@@ -19,52 +21,7 @@ const History = ({ isAuthenticated }: Props) => {
             <p className="text-bd-m md:text-bd text-cuslightblack">
               Lihat riwayat hasil analisis gambar anda
             </p>
-            <div className="w-full mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
-              <div className="flex items-end justify-start gap-4 p-4 bg-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)]">
-                <div className="w-15 h-15 rounded-md bg-cusblack"></div>
-                <div className="flex flex-col items-start justify-end ">
-                  <p className="text-bd-m md:text-bd text-cusblack font-semibold">
-                    <span>59 %</span>Terdeteksi AI
-                  </p>
-                  <p className="text-capt-m md:text-capt text-cusdarkgrey">
-                    29 Maret 2026
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-end justify-start gap-4 p-4 bg-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)]">
-                <div className="w-15 h-15 rounded-md bg-cusblack"></div>
-                <div className="flex flex-col items-start justify-end ">
-                  <p className="text-bd-m md:text-bd text-cusblack font-semibold">
-                    <span>59 %</span>Terdeteksi AI
-                  </p>
-                  <p className="text-capt-m md:text-capt text-cusdarkgrey">
-                    29 Maret 2026
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-end justify-start gap-4 p-4 bg-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)]">
-                <div className="w-15 h-15 rounded-md bg-cusblack"></div>
-                <div className="flex flex-col items-start justify-end ">
-                  <p className="text-bd-m md:text-bd text-cusblack font-semibold">
-                    <span>59 %</span>Terdeteksi AI
-                  </p>
-                  <p className="text-capt-m md:text-capt text-cusdarkgrey">
-                    29 Maret 2026
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-end justify-start gap-4 p-4 bg-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)]">
-                <div className="w-15 h-15 rounded-md bg-cusblack"></div>
-                <div className="flex flex-col items-start justify-end ">
-                  <p className="text-bd-m md:text-bd text-cusblack font-semibold">
-                    <span>59 %</span>Terdeteksi AI
-                  </p>
-                  <p className="text-capt-m md:text-capt text-cusdarkgrey">
-                    29 Maret 2026
-                  </p>
-                </div>
-              </div>
-            </div>
+            <HistoryList analysisRecord={} />
           </section>
         </main>
       </>

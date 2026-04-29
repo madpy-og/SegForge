@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const AnalysisRecordSchema = z.object({
+export const analysisRecordSchema = z.object({
   userId: z.string().nullable().optional(),
   imageUrl: z.string(),
   imageSize: z.number().positive(),
@@ -12,4 +12,8 @@ export const AnalysisRecordSchema = z.object({
     model: z.string(),
   }),
   processingDuration: z.number().nonnegative(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
 });
+
+export type AnalysisRecordSchema = z.infer<typeof analysisRecordSchema>;
