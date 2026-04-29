@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./src/config/db.js";
 import authRoutes from "./src/routes/authRoutes.js";
+import analysisRecordRoutes from "./src/routes/analysisRecordRoutes.js";
 import analyzeRoutes from "./src/routes/analyzeRoutes.js";
 import cloudinaryRoutes from "./src/routes/cloudinaryRoutes.js";
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 connectDB();
 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/analysis-record", analysisRecordRoutes);
 app.use("/api/v1/analyze", analyzeRoutes);
 app.use("/api/v1/cloudinary", cloudinaryRoutes);
 
