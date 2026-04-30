@@ -8,8 +8,7 @@ export const getAllAnalysisRecord = async () => {
     );
 
     if (!res.ok) {
-      console.error("failed to get analysis record data");
-      return;
+      throw new Error("Failed to get analysis record data");
     }
 
     const data = await res.json();
@@ -31,8 +30,7 @@ export const deleteAnalysisRecordById = async (id: string) => {
     );
 
     if (!res.ok) {
-      console.error("Failed to delete analysis record data");
-      return;
+      throw new Error("Failed to delete analysis record data");
     }
 
     const result = await res.json();

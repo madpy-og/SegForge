@@ -9,7 +9,7 @@ export const loginSchema = z.object({
   password: z
     .string()
     .min(1, "Password wajib diisi")
-    .min(6, "Password minimal 6 karakter"),
+    .min(3, "Password minimal 3 karakter"),
 });
 
 export type LoginSchema = z.infer<typeof loginSchema>;

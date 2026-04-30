@@ -19,8 +19,7 @@ const getSignature = async (
     );
 
     if (!res.ok) {
-      console.log("Failed to get signature");
-      return;
+      throw new Error("Failed to get signature");
     }
 
     const data = await res.json();
@@ -62,8 +61,7 @@ export const uploadToCloudinary = async (
     );
 
     if (!res.ok) {
-      console.log("Failed to upload image");
-      return;
+      throw new Error("Failed to upload an image");
     }
 
     const data = await res.json();

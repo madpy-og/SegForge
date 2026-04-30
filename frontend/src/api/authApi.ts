@@ -23,8 +23,7 @@ export const register = async (user: RegisterSchema) => {
   });
 
   if (!res.ok) {
-    console.log("Failed to register account");
-    return;
+    throw new Error("Failed to register");
   }
 
   return res.json();
@@ -41,8 +40,7 @@ export const login = async (user: LoginSchema) => {
   });
 
   if (!res.ok) {
-    console.log("Failed to login");
-    return;
+    throw new Error("Failed to login");
   }
 
   return res.json();
@@ -55,7 +53,6 @@ export const logout = async () => {
   });
 
   if (!res.ok) {
-    console.log("Failed to logout");
-    return;
+    throw new Error("Failed to logout");
   }
 };

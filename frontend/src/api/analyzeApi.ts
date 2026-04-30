@@ -12,8 +12,7 @@ export const analyze = async (imageUrl: string) => {
     });
 
     if (!res.ok) {
-      console.log("Failed to analyze image");
-      return;
+      throw new Error("Failed to analyze image");
     }
 
     const data = await res.json();
