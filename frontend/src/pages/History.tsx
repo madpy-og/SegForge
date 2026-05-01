@@ -24,8 +24,10 @@ const History = ({ isAuthenticated }: Props) => {
               Lihat riwayat hasil analisis gambar anda
             </p>
             <div className="w-full mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
-              {analysisRecord ? (
+              {Array.isArray(analysisRecord) && analysisRecord.length > 0 ? (
                 <HistoryList analysisRecord={analysisRecord} />
+              ) : Array.isArray(analysisRecord) && analysisRecord.length === 0 ? (
+                <p className="text-cuslightblack col-span-full">Belum ada riwayat terbaru.</p>
               ) : null}
             </div>
           </section>

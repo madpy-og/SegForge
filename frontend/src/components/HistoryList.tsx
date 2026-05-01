@@ -7,12 +7,16 @@ type Props = {
 };
 
 const HistoryList = ({ analysisRecord }: Props) => {
+  if (!Array.isArray(analysisRecord)) {
+    return null;
+  }
+
   return (
     <>
       {analysisRecord.map((r) => {
         return (
           <HistoryItem
-            key={r.userId}
+            key={r._id}
             imageUrl={r.imageUrl}
             aiProbability={r.analysisResult.aiProbability}
             createdAt={r.createdAt}

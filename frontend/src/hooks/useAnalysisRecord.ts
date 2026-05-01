@@ -16,7 +16,15 @@ export const useAnalysisRecord = () => {
         return;
       }
 
-      setAnalysisRecord(data);
+      if (data && Array.isArray(data.analysisRecord)) {
+        setAnalysisRecord(data.analysisRecord);
+      } else if (Array.isArray(data)) {
+        // Just in case the API directly returns an array
+        setAnalysisRecord(data);
+      } else {
+        // Fallback if data format is unexpected
+        setAnalysisRecord([]);
+      }
     } catch (error) {
       console.error("Internal server error");
     }

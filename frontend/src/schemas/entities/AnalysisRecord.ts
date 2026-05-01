@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const analysisRecordSchema = z.object({
+  _id: z.string(),
   userId: z.string().nullable().optional(),
   imageUrl: z.string(),
   imageSize: z.number().positive(),
