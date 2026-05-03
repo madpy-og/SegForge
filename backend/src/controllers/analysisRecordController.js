@@ -18,10 +18,15 @@ export const getAnalysisRecord = async (req, res) => {
 
 export const addAnalysisRecord = async (req, res) => {
   try {
-    const record = req.body;
+    const { userId, imageUrl, imageSize, analysisResult, processingDuration } =
+      req.record;
 
     const newRecord = await AnalysisRecord.create({
-      record,
+      userId,
+      imageUrl,
+      imageSize,
+      analysisResult,
+      processingDuration,
     });
 
     res
