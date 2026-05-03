@@ -21,10 +21,10 @@ export const analyzeImage = async (req, res) => {
       mimeType,
     });
 
-    const record = await AnalysisRecord.create({
+    const record = {
       userId: req.user?._id ?? null,
       ...analysisData,
-    });
+    };
 
     res.status(201).json(record);
   } catch (error) {

@@ -16,6 +16,22 @@ export const getAnalysisRecord = async (req, res) => {
   }
 };
 
+export const addAnalysisRecord = async (req, res) => {
+  try {
+    const record = req.body;
+
+    const newRecord = await AnalysisRecord.create({
+      record,
+    });
+
+    res
+      .status(201)
+      .json({ newRecord, message: "Analysis record created succesfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const deleteAnalysisRecord = async (req, res) => {
   try {
     await AnalysisRecord.findByIdAndDelete(req.params.id);
