@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import { checkAuth } from "../api/authApi";
 import History from "../pages/History";
+import AnalysisResult from "../pages/AnalysisResult";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,13 +22,20 @@ const App = () => {
   }, []);
 
   if (isAuthLoading) {
-    return <div className="min-h-screen bg-cusgrey flex items-center justify-center"></div>;
+    return (
+      <div className="min-h-screen bg-cusgrey flex items-center justify-center"></div>
+    );
   }
 
   return (
     <div className="min-h-screen bg-cusgrey">
       <Routes>
         <Route path="/" element={<Home isAuthenticated={isAuthenticated} />} />
+        <Route
+          path="/analysis-result"
+          element={<AnalysisResult isAuthenticated={isAuthenticated} />}
+        />
+
         <Route
           path="/history"
           element={<History isAuthenticated={isAuthenticated} />}

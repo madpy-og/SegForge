@@ -1,3 +1,5 @@
+import { type AddAnalysisRecordSchema } from "../schemas/input/AddAnalysisRecordSchema";
+
 export const getAllAnalysisRecord = async () => {
   try {
     const res = await fetch(
@@ -14,6 +16,44 @@ export const getAllAnalysisRecord = async () => {
     const data = await res.json();
 
     return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const addAnalysisRecord = async ({
+  userId,
+  imageUrl,
+  imageSize,
+  analysisResult,
+  processingDuration,
+}: AddAnalysisRecordSchema) => {
+  try {
+    const res = await fetch(
+      `${import.meta.env.VITE_BASE_URL}/analysis-record`,
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId,
+          imageUrl,
+          imageSize,
+          analysisResult,
+          processingDuration,
+        }),
+      },
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to analyze image");
+    }
+
+    const result = await res.json();
+
+    return result;
   } catch (error) {
     console.error(error);
   }
