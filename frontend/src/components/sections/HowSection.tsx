@@ -4,7 +4,7 @@ import { Image, Search, Timer } from "lucide-react";
 
 const HowSection = () => {
   return (
-    <section className="w-full pt-10 md:pt-30 pb-15 md:pb-35 mt-20 flex flex-col items-center justify-center gap-7 md:gap-5 bg-cusdarkgrey/10">
+    <section className="w-full pt-10 md:pt-30 pb-15 md:pb-35 mt-20 flex flex-col items-center justify-center gap-7 md:gap-5 bg-cusmedgrey">
       <h1 className="text-center text-[32px] md:text-[60px] leading-10 md:leading-20 text-cusblack font-bold">
         Bagaimana Sistem Bekerja
       </h1>

@@ -25,6 +25,7 @@
   --color-cusblack: #1f1f21;
   --color-cuslightblack: #5f5e5e;
   --color-cusdarkgrey: #b9b9b9;
+  --color-cusmedgrey: #f1f3f4;
   --color-cusgrey: #f8fafb;
   --color-cuswhite: #ffffff;
   --color-danger: #a6192e;
@@ -60,4 +61,27 @@ html {
 
 .outline-button {
   @apply text-center text-cusblack border border-cusdarkgrey hover:bg-cusgrey cursor-pointer transition;
+}
+
+/* ========== SKELETON LOADING ANIMATIONS ========== */
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    to right,
+    #f1f3f4 0%,
+    #ffffff 20%,
+    #f1f3f4 40%,
+    #f1f3f4 100%
+  );
+  background-size: 1000px 100%;
 }

@@ -6,7 +6,13 @@ import { analyze } from "../api/analyzeApi";
 import { addAnalysisRecord } from "../api/analysisRecordApi";
 import type { AnalysisRecordSchema } from "../schemas/entities/AnalysisRecord";
 import { GridLoader } from "react-spinners";
-import { CheckCircle2, AlertTriangle, ShieldAlert, Calendar } from "lucide-react";
+import {
+  CheckCircle2,
+  AlertTriangle,
+  ShieldAlert,
+  Calendar,
+} from "lucide-react";
+import AnalyzeLoading from "../components/AnalyzeLoading";
 
 type Props = {
   isAuthenticated: boolean;
@@ -27,10 +33,15 @@ const AnalysisResult = ({ isAuthenticated }: Props) => {
         try {
           const file = location.state.imageFile;
 
-          const uploadData = await uploadToCloudinary({ image: file } as any, "image");
+          const uploadData = await uploadToCloudinary(
+            { image: file } as any,
+            "image",
+          );
 
           if (!uploadData) {
-            setErrorMsg("Gagal mengunggah gambar. Silakan periksa koneksi atau konfigurasi Cloudinary Anda.");
+            setErrorMsg(
+              "Gagal mengunggah gambar. Silakan periksa koneksi atau konfigurasi Cloudinary Anda.",
+            );
             setIsLoading(false);
             return;
           }
@@ -50,13 +61,18 @@ const AnalysisResult = ({ isAuthenticated }: Props) => {
             }
           }
 
-          sessionStorage.setItem("current-analysis", JSON.stringify(analyzeData));
+          sessionStorage.setItem(
+            "current-analysis",
+            JSON.stringify(analyzeData),
+          );
           setResult(analyzeData);
 
           window.history.replaceState({}, document.title);
         } catch (error: any) {
           console.error(error);
-          setErrorMsg(error?.message || "Terjadi kesalahan yang tidak terduga.");
+          setErrorMsg(
+            error?.message || "Terjadi kesalahan yang tidak terduga.",
+          );
         } finally {
           setIsLoading(false);
         }
@@ -78,43 +94,21 @@ const AnalysisResult = ({ isAuthenticated }: Props) => {
     <>
       <Navbar isAuthenticated={isAuthenticated} />
       <main className="h-screen w-full pt-[70px] flex items-center justify-center px-4 md:px-10 lg:px-20 overflow-hidden bg-cusgrey">
-        
         {isLoading ? (
-          <div className="w-full max-w-5xl h-full max-h-[85vh] md:max-h-[600px] bg-cuswhite rounded-2xl shadow-[0px_0px_20px_-12px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col md:flex-row">
-            {/* Image Skeleton */}
-            <div className="w-full h-[40%] md:h-full md:w-1/2 bg-cusdarkgrey/10 flex flex-col items-center justify-center p-10 relative shrink-0">
-              <div className="absolute inset-0 bg-cusblack/5 animate-pulse"></div>
-              <GridLoader color="#1f1f21" size={15} />
-              <p className="mt-8 text-cusblack font-semibold tracking-wide animate-pulse">Memproses Gambar...</p>
-            </div>
-            
-            {/* Content Skeleton */}
-            <div className="w-full h-[60%] md:h-full md:w-1/2 p-6 md:p-12 flex flex-col justify-center gap-6 overflow-hidden">
-              <div className="w-32 h-6 bg-cusdarkgrey/20 rounded-md animate-pulse mb-4 shrink-0"></div>
-              <div className="w-full h-12 bg-cusdarkgrey/20 rounded-full animate-pulse mb-2 shrink-0"></div>
-              <div className="w-full h-14 bg-cusdarkgrey/20 rounded-md animate-pulse shrink-0"></div>
-              <div className="space-y-4 mt-4 w-full">
-                <div className="w-3/4 h-4 bg-cusdarkgrey/20 rounded-md animate-pulse"></div>
-                <div className="w-full h-4 bg-cusdarkgrey/20 rounded-md animate-pulse"></div>
-                <div className="w-5/6 h-4 bg-cusdarkgrey/20 rounded-md animate-pulse"></div>
-              </div>
-            </div>
-          </div>
+          <AnalyzeLoading />
         ) : result ? (
           <div className="w-full max-w-5xl h-full max-h-[85vh] md:max-h-[600px] bg-cuswhite rounded-2xl shadow-[0px_0px_20px_-12px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col md:flex-row">
-            
             {/* Image Side */}
             <div className="w-full h-[40%] md:h-full md:w-1/2 bg-cusdarkgrey/10 flex items-center justify-center p-6 md:p-10 shrink-0 relative">
-              <img 
-                src={result.imageUrl} 
-                alt="Analyzed" 
+              <img
+                src={result.imageUrl}
+                alt="Analyzed"
                 className="w-full h-full object-contain drop-shadow-md"
               />
             </div>
 
             {/* Content Side */}
             <div className="w-full h-[60%] md:h-full md:w-1/2 p-6 md:p-12 flex flex-col overflow-y-auto">
-              
               <div className="flex items-center justify-between mb-6 shrink-0">
                 <span className="text-capt md:text-bs font-bold text-cuslightblack uppercase tracking-widest">
                   Hasil Analisis
@@ -122,9 +116,17 @@ const AnalysisResult = ({ isAuthenticated }: Props) => {
                 <div className="flex items-center text-cuslightblack text-capt md:text-bs gap-2">
                   <Calendar size={16} />
                   <span>
-                    {result.createdAt 
-                      ? new Date(result.createdAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
-                      : new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    {result.createdAt
+                      ? new Date(result.createdAt).toLocaleDateString("id-ID", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })
+                      : new Date().toLocaleDateString("id-ID", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
                   </span>
                 </div>
               </div>
@@ -162,10 +164,13 @@ const AnalysisResult = ({ isAuthenticated }: Props) => {
                   </span>
                 </div>
                 <div className="w-full h-3 bg-cusdarkgrey/30 rounded-full overflow-hidden">
-                  <div 
+                  <div
                     className={`h-full rounded-full transition-all duration-1000 ease-out ${
-                      result.analysisResult.aiProbability > 70 ? 'bg-danger' : 
-                      result.analysisResult.aiProbability > 40 ? 'bg-caution' : 'bg-success'
+                      result.analysisResult.aiProbability > 70
+                        ? "bg-danger"
+                        : result.analysisResult.aiProbability > 40
+                          ? "bg-caution"
+                          : "bg-success"
                     }`}
                     style={{ width: `${result.analysisResult.aiProbability}%` }}
                   ></div>
@@ -187,11 +192,12 @@ const AnalysisResult = ({ isAuthenticated }: Props) => {
                     </li>
                   ))}
                   {result.analysisResult.indicators.length === 0 && (
-                    <p className="text-bd-m text-cuslightblack italic">Tidak ada indikator spesifik yang ditemukan.</p>
+                    <p className="text-bd-m text-cuslightblack italic">
+                      Tidak ada indikator spesifik yang ditemukan.
+                    </p>
                   )}
                 </ul>
               </div>
-
             </div>
           </div>
         ) : errorMsg ? (
@@ -199,7 +205,7 @@ const AnalysisResult = ({ isAuthenticated }: Props) => {
             <AlertTriangle size={48} className="text-danger mb-4" />
             <h2 className="text-h6 font-bold text-cusblack mb-2">Peringatan</h2>
             <p className="text-center text-bd text-cuslightblack">{errorMsg}</p>
-            <button 
+            <button
               onClick={() => navigate("/")}
               className="mt-6 px-6 py-2 primary-button rounded-md font-medium"
             >
@@ -208,8 +214,10 @@ const AnalysisResult = ({ isAuthenticated }: Props) => {
           </div>
         ) : (
           <div className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center p-10 bg-cuswhite rounded-2xl shadow-[0px_0px_20px_-12px_rgba(0,0,0,0.3)]">
-            <p className="text-center text-bd text-cuslightblack">Gagal memuat hasil analisis.</p>
-            <button 
+            <p className="text-center text-bd text-cuslightblack">
+              Gagal memuat hasil analisis.
+            </p>
+            <button
               onClick={() => navigate("/")}
               className="mt-6 px-6 py-2 outline-button rounded-md font-medium"
             >
