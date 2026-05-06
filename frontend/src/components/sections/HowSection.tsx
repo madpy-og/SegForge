@@ -4,11 +4,11 @@ import { Image, Search, Timer } from "lucide-react";
 
 const HowSection = () => {
   return (
-    <section className="w-full pt-10 md:pt-30 pb-15 md:pb-35 mt-20 flex flex-col items-center justify-center gap-7 md:gap-5 bg-cusmedgrey">
+    <section className="w-full pt-10 md:pt-30 pb-15 md:pb-40 mt-20 flex flex-col items-center justify-center gap-7 md:gap-5 bg-cusmedgrey">
       <h1 className="text-center text-[32px] md:text-[60px] leading-10 md:leading-20 text-cusblack font-bold">
         Bagaimana Sistem Bekerja
       </h1>
-      <div className="w-full px-4 md:px-18 lg:px-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="w-full px-4 md:px-18 lg:px-24 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-5">
         <div className="min-h-[150px] md:min-h-[200px] flex flex-col p-6 items-start justify-between gap-6 bg-cusblack text-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)] overflow-hidden">
           <Search className="shrink-0 w-5 h-5 md:w-6 md:h-6" />
           <div className="flex flex-col items-start justify-between gap-1">

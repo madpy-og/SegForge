@@ -13,11 +13,24 @@ const BULAN_INDONESIA = [
   "Desember",
 ];
 
-export function formatDate(dateString: string | Date): string {
+export function formatDate(
+  dateString: string | Date | null | undefined,
+): string {
   try {
+    // Handle null/undefined
+    if (!dateString) {
+      return new Date().toLocaleDateString("id-ID", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
+    }
+
     const date = new Date(dateString);
 
+    // Validasi
     if (isNaN(date.getTime())) {
+      console.warn("Invalid date:", dateString);
       return "Tanggal tidak valid";
     }
 
@@ -27,6 +40,7 @@ export function formatDate(dateString: string | Date): string {
 
     return `${day} ${month} ${year}`;
   } catch (error) {
+    console.error("Error formatting date:", error);
     return "Tanggal tidak valid";
   }
 }

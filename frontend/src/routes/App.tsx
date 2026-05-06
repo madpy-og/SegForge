@@ -5,7 +5,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import { checkAuth } from "../api/authApi";
 import History from "../pages/History";
-import AnalysisResult from "../pages/AnalysisResult";
+import Analysis from "../pages/Analysis";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -33,9 +33,8 @@ const App = () => {
         <Route path="/" element={<Home isAuthenticated={isAuthenticated} />} />
         <Route
           path="/analysis-result"
-          element={<AnalysisResult isAuthenticated={isAuthenticated} />}
+          element={<Analysis isAuthenticated={isAuthenticated} />}
         />
-
         <Route
           path="/history"
           element={<History isAuthenticated={isAuthenticated} />}
