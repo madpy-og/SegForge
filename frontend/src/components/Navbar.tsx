@@ -56,7 +56,7 @@ const Navbar = ({ isAuthenticated }: Props) => {
           onClick={() => {
             isAuthenticated ? handleLogout() : navigate("/login");
           }}
-          className="primary-button rounded-full text-bs-m md:text-bs py-1.5 px-5"
+          className=" primary-button rounded-full text-bs-m md:text-bs py-1.5 px-5"
         >
           {isAuthenticated ? "Logout" : "Login"}
         </button>
