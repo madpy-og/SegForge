@@ -25,33 +25,33 @@ const AnalysisDetail = ({ result }: Props) => {
       </div>
 
       {/* Content Side */}
-      <div className="w-full h-[60%] md:h-full md:w-1/2 p-6 md:p-12 flex flex-col overflow-y-auto">
+      <div className="w-full h-[60%] md:h-full md:w-1/2 p-6 md:p-10 flex flex-col overflow-y-auto">
         <div className="flex items-center justify-between mb-6 shrink-0">
-          <span className="text-capt md:text-bs font-bold text-cuslightblack uppercase tracking-widest">
+          <span className="text-bs-m md:text-bs font-bold text-cusblack uppercase tracking-widest">
             Hasil Analisis
           </span>
-          <div className="flex items-center text-cuslightblack text-capt md:text-bs gap-2">
+          <div className="flex items-center text-cuslightblack text-bs-m md:text-bs gap-2">
             <Calendar size={16} />
             <span>{formatDate(result.createdAt)}</span>
           </div>
         </div>
 
         {/* Label Badge */}
-        <div className="mb-6 md:mb-8 shrink-0">
+        <div className="mb-6 md:mb-6 shrink-0">
           {result.analysisResult.label === "Human" && (
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-success/10 text-success rounded-full font-bold text-bd md:text-bl">
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-success/10 text-success rounded-full font-bold text-bd-m md:text-bd">
               <CheckCircle2 size={24} />
               <span>Gambar Asli (Manusia)</span>
             </div>
           )}
           {result.analysisResult.label === "AI" && (
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-danger/10 text-danger rounded-full font-bold text-bd md:text-bl">
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-danger/10 text-danger rounded-full font-bold text-bd-m md:text-bd">
               <ShieldAlert size={24} />
               <span>Terdeteksi AI</span>
             </div>
           )}
           {result.analysisResult.label === "Uncertain" && (
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-caution/10 text-caution rounded-full font-bold text-bd md:text-bl">
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-caution/10 text-caution rounded-full font-bold text-bd-m md:text-bd">
               <AlertTriangle size={24} />
               <span>Sulit Dipastikan</span>
             </div>
@@ -59,16 +59,16 @@ const AnalysisDetail = ({ result }: Props) => {
         </div>
 
         {/* Probability Bar */}
-        <div className="mb-6 md:mb-8 shrink-0">
+        <div className="mb-6 md:mb-6 shrink-0">
           <div className="flex justify-between items-end mb-3">
-            <span className="font-semibold text-cusblack text-bd md:text-bl">
+            <span className="font-semibold text-cusblack text-bd-m md:text-bd">
               Probabilitas AI
             </span>
-            <span className="font-bold text-h3 md:text-h2 text-cusblack leading-none">
+            <span className="font-bold text-h4-m md:text-h4 text-cusblack leading-none">
               {result.analysisResult.aiProbability}%
             </span>
           </div>
-          <div className="w-full h-3 bg-cusdarkgrey/30 rounded-full overflow-hidden">
+          <div className="w-full h-2.5 bg-cusmedgrey rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full transition-all duration-1000 ease-out ${
                 result.analysisResult.aiProbability > 70
@@ -84,13 +84,13 @@ const AnalysisDetail = ({ result }: Props) => {
 
         {/* Indicators */}
         <div className="flex-1">
-          <span className="font-semibold text-cusblack text-bd md:text-bl mb-4 block">
+          <span className="font-semibold text-cusblack text-bd-m md:text-bd mb-2 block">
             Indikator Penemuan:
           </span>
-          <ul className="space-y-3 pb-4">
-            {result.analysisResult.indicators.map((indicator, idx) => (
-              <li key={idx} className="flex items-start gap-3">
-                <div className="mt-2 w-2 h-2 rounded-full bg-cusblack shrink-0"></div>
+          <ul className="space-y-2 pb-4">
+            {result.analysisResult.indicators.map((indicator, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-cusblack shrink-0"></div>
                 <p className="text-bd-m md:text-bd text-cuslightblack leading-relaxed">
                   {indicator}
                 </p>
