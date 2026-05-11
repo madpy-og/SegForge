@@ -6,7 +6,7 @@ import { uploadSchema, type UploadSchema } from "../schemas/input/UploadSchema";
 import MainSection from "../components/sections/MainSection";
 import HowSection from "../components/sections/HowSection";
 import { useNavigate } from "react-router";
-import { AlertTriangle } from "lucide-react";
+import Footer from "../components/Footer";
 
 type Props = {
   isAuthenticated: boolean;
@@ -31,6 +31,7 @@ const Home = ({ isAuthenticated }: Props) => {
         <MainSection form={form} handleSubmit={handleSubmit} />
         <HowSection />
       </main>
+      <Footer />
     </>
   );
 };
