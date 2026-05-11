@@ -9,7 +9,7 @@ const HowSection = () => {
         Bagaimana Sistem Bekerja
       </h1>
       <div className="w-full px-4 md:px-18 lg:px-24 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-5">
-        <div className="min-h-[150px] md:min-h-[200px] flex flex-col p-6 items-start justify-between gap-6 bg-cusblack text-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)] overflow-hidden">
+        <div className="min-h-[150px] md:min-h-[200px] flex flex-col p-6 items-start justify-between gap-6 bg-cusblack text-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <Search className="shrink-0 w-5 h-5 md:w-6 md:h-6" />
           <div className="flex flex-col items-start justify-between gap-1">
             <h5 className="text-h5-m md:text-h5 font-bold">
@@ -22,7 +22,7 @@ const HowSection = () => {
             </p>
           </div>
         </div>
-        <div className="min-h-[150px] md:min-h-[200px] flex flex-col p-6 items-start justify-between gap-6 bg-cuswhite text-cusblack rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)] overflow-hidden">
+        <div className="min-h-[150px] md:min-h-[200px] flex flex-col p-6 items-start justify-between gap-6 bg-cuswhite text-cusblack rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <Image className="shrink-0 w-5 h-5 md:w-6 md:h-6" />
           <div className="flex flex-col items-start justify-between gap-1">
             <h5 className="text-h5-m md:text-h5 font-bold">
@@ -35,7 +35,7 @@ const HowSection = () => {
             </p>
           </div>
         </div>
-        <div className="min-h-[150px] md:min-h-[200px] flex flex-col p-6 items-start justify-between gap-6 bg-cusblack text-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)] overflow-hidden">
+        <div className="min-h-[150px] md:min-h-[200px] flex flex-col p-6 items-start justify-between gap-6 bg-cusblack text-cuswhite rounded-lg shadow-[2px_2px_8px_-3px_rgba(0,0,0,0.3)] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <Timer className="shrink-0 w-5 h-5 md:w-6 md:h-6" />
           <div className="flex flex-col items-start justify-between gap-1">
             <h5 className="text-h5-m md:text-h5 font-bold">
