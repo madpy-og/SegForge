@@ -65,7 +65,7 @@ const AnalysisForm = ({ form, handleSubmit }: Props) => {
                   {file.name}
                 </p>
                 {form.formState.errors.image && (
-                  <p className="text-capt-m md:text-capt text-danger ">
+                  <p className="text-bs-m md:text-bs text-danger ">
                     {form.formState.errors.image.message}
                   </p>
                 )}
@@ -85,6 +85,7 @@ const AnalysisForm = ({ form, handleSubmit }: Props) => {
 
       <button
         form="analysis-form"
+        disabled={!form.formState.isValid}
         className="primary-button text-bs-m md:text-bs py-2 px-4 rounded-md"
       >
         Mulai Deteksi

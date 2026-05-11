@@ -10,13 +10,13 @@ export const AnalysisClientError = ({ errorMsg }: Props) => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center p-10 bg-cuswhite rounded-2xl shadow-[0px_0px_20px_-12px_rgba(0,0,0,0.3)]">
-      <AlertTriangle size={48} className="text-danger mb-4" />
-      <h2 className="text-h6 font-bold text-cusblack mb-2">Peringatan</h2>
-      <p className="text-center text-bd text-cuslightblack">{errorMsg}</p>
+    <div className="w-full max-w-110 mx-auto flex flex-col items-center justify-center gap-3 py-10 bg-cuswhite rounded-2xl shadow-[0px_0px_20px_-12px_rgba(0,0,0,0.3)]">
+      <AlertTriangle strokeWidth={2} className="w-7 md:w-10 h-7 md:h-10 text-danger" />
+      <h2 className="text-bd-m md:text-bd font-bold text-danger leading-2">Terjadi kesalahan!</h2>
+      <p className="text-center text-bs-m md:text-bs text-danger ">Gagal menganalisis gambar, silahkan coba kembali</p>
       <button
         onClick={() => navigate("/")}
-        className="mt-6 px-6 py-2 primary-button rounded-md font-medium"
+        className="primary-button text-bs-m md:text-bs py-2 px-4 rounded-md"
       >
         Kembali ke Beranda
       </button>
@@ -34,7 +34,7 @@ export const AnalysisServerError = () => {
       </p>
       <button
         onClick={() => navigate("/")}
-        className="mt-6 px-6 py-2 outline-button rounded-md font-medium"
+        className="primary-button text-bs-m md:text-bs py-2 px-4 rounded-md"
       >
         Kembali ke Beranda
       </button>

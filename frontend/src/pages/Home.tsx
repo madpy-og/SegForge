@@ -6,6 +6,7 @@ import { uploadSchema, type UploadSchema } from "../schemas/input/UploadSchema";
 import MainSection from "../components/sections/MainSection";
 import HowSection from "../components/sections/HowSection";
 import { useNavigate } from "react-router";
+import { AlertTriangle } from "lucide-react";
 
 type Props = {
   isAuthenticated: boolean;
@@ -14,6 +15,7 @@ type Props = {
 const Home = ({ isAuthenticated }: Props) => {
   const form = useForm<UploadSchema>({
     resolver: zodResolver(uploadSchema),
+    mode: "onChange",
   });
 
   const navigate = useNavigate();
