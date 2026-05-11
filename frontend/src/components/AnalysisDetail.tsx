@@ -14,7 +14,7 @@ type Props = {
 
 const AnalysisDetail = ({ result }: Props) => {
   return (
-    <div className="w-full max-w-5xl h-120 max-h-[85vh] md:max-h-[600px] bg-cuswhite rounded-lg shadow-[0px_0px_20px_-12px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col md:flex-row">
+    <div className="w-full max-w-5xl h-145 md:h-120 max-h-[100vh] md:max-h-[600px] bg-cuswhite rounded-lg shadow-[0px_0px_20px_-12px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col md:flex-row">
       {/* Image Side */}
       <div className="w-full h-[40%] md:h-full md:w-1/2 bg-cusmedgrey flex items-center justify-center p-6 md:p-10 shrink-0 relative">
         <img
