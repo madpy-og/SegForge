@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
-
+import crypto from "crypto";
+import { sendVerificationEmail } from "../utils/sendEmail.js";
 const generateToken = async (_id) => {
   const token = jwt.sign({ _id: _id }, process.env.SECRET_KEY, {
     expiresIn: "24h",
@@ -13,6 +14,12 @@ export const loginUser = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
+    }
+
+    if (!user.isVerified) {
+      return res.status(403).json({
+        message: "Silakan verifikasi email Anda terlebih dahulu sebelum login.",
+      });
     }
 
     const isPasswordValid = await user.comparePassword(req.body.password);
@@ -37,13 +44,25 @@ export const registerUser = async (req, res) => {
   try {
     const { fullname, email, password } = req.body;
 
+    const verificationToken = crypto.randomBytes(32).toString("hex");
+
     await User.create({
       fullname: fullname,
       email: email,
       passwordHash: password,
+      verificationToken: verificationToken,
+      isVerified: false,
     });
 
-    res.status(201).json({ message: "User registered successfully" });
+    try {
+      await sendVerificationEmail(email, verificationToken);
+    } catch (emailError) {
+      console.error("Gagal mengirim email saat registrasi:", emailError);
+    }
+
+    res.status(201).json({ 
+      message: "Registrasi berhasil. Silakan periksa kotak masuk atau spam email Anda untuk memverifikasi akun." 
+    });
   } catch (error) {
     res.status(500).json({ message: "internal server error" });
   }
@@ -67,5 +86,29 @@ export const checkAuth = async (req, res) => {
     res.status(200).json({ _id: req.user._id, message: "Authenticated" });
   } catch (error) {
     res.status(500).json({ message: "internal server error" });
+  }
+};
+
+export const verifyEmail = async (req, res) => {
+  try {
+    const { token } = req.query;
+
+    if (!token) {
+      return res.status(400).json({ message: "Token verifikasi tidak valid atau tidak ditemukan" });
+    }
+
+    const user = await User.findOne({ verificationToken: token });
+
+    if (!user) {
+      return res.status(400).json({ message: "Token verifikasi tidak valid atau sudah kedaluwarsa" });
+    }
+
+    user.isVerified = true;
+    user.verificationToken = null;
+    await user.save();
+
+    res.status(200).json({ message: "Email berhasil diverifikasi. Anda sekarang dapat login." });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
   }
 };

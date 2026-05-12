@@ -4,6 +4,7 @@ import {
   registerUser,
   logoutUser,
   checkAuth,
+  verifyEmail,
 } from "../controllers/authController.js";
 import {
   checkUserExistLogin,
@@ -24,5 +25,6 @@ router.post(
 );
 router.post("/login", validateLogin, checkUserExistLogin, loginUser);
 router.post("/logout", logoutUser);
+router.get("/verify-email", verifyEmail);
 
 export default router;
