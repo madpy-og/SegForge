@@ -38,7 +38,7 @@ const Analysis = ({ isAuthenticated }: Props) => {
 
           if (!uploadData) {
             setErrorMsg(
-              "Gagal mengunggah gambar. Silakan periksa koneksi atau konfigurasi Cloudinary Anda.",
+              ">Gagal menganalisis gambar, silahkan coba kembali nanti",
             );
             setIsLoading(false);
             return;
@@ -47,7 +47,7 @@ const Analysis = ({ isAuthenticated }: Props) => {
           const analyzeData = await analyze(uploadData.imageUrl);
 
           if (!analyzeData) {
-            setErrorMsg("Gagal menganalisis gambar. Silakan coba lagi nanti.");
+            setErrorMsg(">Gagal menganalisis gambar, silahkan coba kembali nanti");
             setIsLoading(false);
             return;
           }
@@ -69,7 +69,7 @@ const Analysis = ({ isAuthenticated }: Props) => {
         } catch (error: any) {
           console.error(error);
           setErrorMsg(
-            error?.message || "Terjadi kesalahan yang tidak terduga.",
+            error?.message || ">Gagal menganalisis gambar, silahkan coba kembali nanti",
           );
         } finally {
           setIsLoading(false);
@@ -91,7 +91,7 @@ const Analysis = ({ isAuthenticated }: Props) => {
   return (
     <>
       <Navbar isAuthenticated={isAuthenticated} />
-      <main className="h-screen w-full pt-[70px] flex items-center justify-center px-4 md:px-10 lg:px-20 overflow-hidden bg-cusgrey">
+      <main className="h-screen w-full flex items-center justify-center px-4 md:px-10 lg:px-20 overflow-hidden bg-cusgrey">
         {isLoading ? (
           <AnalysisSpinner />
         ) : result ? (

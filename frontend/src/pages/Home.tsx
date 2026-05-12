@@ -7,7 +7,6 @@ import MainSection from "../components/sections/MainSection";
 import HowSection from "../components/sections/HowSection";
 import { useNavigate } from "react-router";
 import Footer from "../components/Footer";
-import AnalysisSpinner from "../components/AnalysisSpinner";
 
 type Props = {
   isAuthenticated: boolean;
