@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import { checkAuth } from "../api/authApi";
 import History from "../pages/History";
 import Analysis from "../pages/Analysis";
+import VerifyEmail from "../pages/VerifyEmail";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -44,6 +45,7 @@ const App = () => {
           path="/login"
           element={<Login setIsAuthenticated={setIsAuthenticated} />}
         />
+        <Route path="/verify-email" element={<VerifyEmail />}></Route>
       </Routes>
     </div>
   );

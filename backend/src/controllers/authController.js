@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import crypto from "crypto";
 import { sendVerificationEmail } from "../utils/sendEmail.js";
+
 const generateToken = async (_id) => {
   const token = jwt.sign({ _id: _id }, process.env.SECRET_KEY, {
     expiresIn: "24h",
@@ -60,8 +61,9 @@ export const registerUser = async (req, res) => {
       console.error("Gagal mengirim email saat registrasi:", emailError);
     }
 
-    res.status(201).json({ 
-      message: "Registrasi berhasil. Silakan periksa kotak masuk atau spam email Anda untuk memverifikasi akun." 
+    res.status(201).json({
+      message:
+        "Registrasi berhasil. Silakan periksa kotak masuk atau spam email Anda untuk memverifikasi akun.",
     });
   } catch (error) {
     res.status(500).json({ message: "internal server error" });
@@ -94,20 +96,30 @@ export const verifyEmail = async (req, res) => {
     const { token } = req.query;
 
     if (!token) {
-      return res.status(400).json({ message: "Token verifikasi tidak valid atau tidak ditemukan" });
+      return res
+        .status(400)
+        .json({ message: "Token verifikasi tidak valid atau tidak ditemukan" });
     }
 
     const user = await User.findOne({ verificationToken: token });
 
     if (!user) {
-      return res.status(400).json({ message: "Token verifikasi tidak valid atau sudah kedaluwarsa" });
+      return res
+        .status(400)
+        .json({
+          message: "Token verifikasi tidak valid atau sudah kedaluwarsa",
+        });
     }
 
     user.isVerified = true;
     user.verificationToken = null;
     await user.save();
 
-    res.status(200).json({ message: "Email berhasil diverifikasi. Anda sekarang dapat login." });
+    res
+      .status(200)
+      .json({
+        message: "Email berhasil diverifikasi. Anda sekarang dapat login.",
+      });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }

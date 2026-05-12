@@ -56,3 +56,11 @@ export const logout = async () => {
     throw new Error("Failed to logout");
   }
 };
+
+export const verifyEmail = async () => {
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/verify-email`);
+
+  if (!res.ok) {
+    throw new Error("Failed to verify email");
+  }
+};
