@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "../Card";
+import Card from "./Card";
 import { Image, Search, Timer } from "lucide-react";
 
-const HowSection = () => {
+const SectionHow = () => {
   return (
     <section className="w-full pt-10 md:pt-30 pb-15 md:pb-40 mt-15 md:mt-40 flex flex-col items-center justify-center gap-7 md:gap-5 bg-cusmedgrey">
       <h1 className="text-center text-[32px] md:text-[60px] leading-10 md:leading-20 text-cusblack font-bold">
@@ -53,4 +53,4 @@ const HowSection = () => {
   );
 };
 
-export default HowSection;
+export default SectionHow;

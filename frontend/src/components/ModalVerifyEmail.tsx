@@ -7,7 +7,7 @@ type Props = {
   openModal: boolean;
 };
 
-const VerifyEmailModal = ({ openModal }: Props) => {
+const ModalVerifyEmail = ({ openModal }: Props) => {
   const navigate = useNavigate();
   return (
     <Modal openModal={openModal}>
@@ -33,4 +33,4 @@ const VerifyEmailModal = ({ openModal }: Props) => {
   );
 };
 
-export default VerifyEmailModal;
+export default ModalVerifyEmail;

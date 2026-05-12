@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router";
 import type { UseFormReturn } from "react-hook-form";
-import type { LoginSchema } from "../../schemas/input/LoginSchema";
-import Badge from "../Badge";
+import type { LoginSchema } from "../schemas/input/LoginSchema";
+import Badge from "./Badge";
 
 type Props = {
   form: UseFormReturn<LoginSchema>;
   handleSubmit: (value: LoginSchema) => Promise<void>;
 };
 
-const LoginForm = ({ form, handleSubmit }: Props) => {
+const FormLogin = ({ form, handleSubmit }: Props) => {
   return (
     <section className="flex flex-col gap-2 items-center justify-center">
       <form
@@ -73,4 +73,4 @@ const LoginForm = ({ form, handleSubmit }: Props) => {
   );
 };
 
-export default LoginForm;
+export default FormLogin;

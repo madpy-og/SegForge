@@ -1,15 +1,15 @@
 import React from "react";
-import type { RegisterSchema } from "../../schemas/input/RegisterSchema";
+import type { RegisterSchema } from "../schemas/input/RegisterSchema";
 import { Link } from "react-router";
 import type { UseFormReturn } from "react-hook-form";
-import Badge from "../Badge";
+import Badge from "./Badge";
 
 type Props = {
   form: UseFormReturn<RegisterSchema>;
   handleSubmit: (value: RegisterSchema) => Promise<void>;
 };
 
-const RegisterForm = ({ form, handleSubmit }: Props) => {
+const FormRegister = ({ form, handleSubmit }: Props) => {
   return (
     <section className="flex flex-col gap-2 items-center justify-center">
       <form
@@ -90,4 +90,4 @@ const RegisterForm = ({ form, handleSubmit }: Props) => {
   );
 };
 
-export default RegisterForm;
+export default FormRegister;

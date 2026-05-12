@@ -5,10 +5,10 @@ import {
   type RegisterSchema,
   registerSchema,
 } from "../schemas/input/RegisterSchema";
-import RegisterForm from "../components/form/RegisterForm";
-import { register, verifyEmail } from "../api/authApi";
+import { register } from "../api/authApi";
 import { useNavigate } from "react-router";
-import VerifyEmailModal from "../components/VerifyEmailModal";
+import ModalVerifyEmail from "../components/ModalVerifyEmail";
+import FormRegister from "../components/FormRegister";
 
 const Register = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -33,9 +33,9 @@ const Register = () => {
   };
   return (
     <>
-      <VerifyEmailModal openModal={openModal} />
+      <ModalVerifyEmail openModal={openModal} />
       <main className="flex flex-col items-center justify-center min-h-screen">
-        <RegisterForm form={form} handleSubmit={handleSubmit} />
+        <FormRegister form={form} handleSubmit={handleSubmit} />
       </main>
     </>
   );

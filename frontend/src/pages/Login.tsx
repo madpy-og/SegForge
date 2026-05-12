@@ -2,9 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { type LoginSchema, loginSchema } from "../schemas/input/LoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import LoginForm from "../components/form/LoginForm";
 import { login } from "../api/authApi.ts";
 import { useNavigate } from "react-router";
+import FormLogin from "../components/FormLogin.tsx";
 
 type Props = {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
@@ -36,7 +36,7 @@ const Login = ({ setIsAuthenticated }: Props) => {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen">
-      <LoginForm form={form} handleSubmit={handleSubmit} />
+      <FormLogin form={form} handleSubmit={handleSubmit} />
     </main>
   );
 };

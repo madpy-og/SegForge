@@ -1,5 +1,5 @@
 import React from "react";
-import type { UploadSchema } from "../../schemas/input/UploadSchema";
+import type { UploadSchema } from "../schemas/input/UploadSchema";
 import type { UseFormReturn } from "react-hook-form";
 import { CloudDownload } from "lucide-react";
 
@@ -8,7 +8,7 @@ type Props = {
   handleSubmit: (value: UploadSchema) => void;
 };
 
-const AnalysisForm = ({ form, handleSubmit }: Props) => {
+const FormAnalysis = ({ form, handleSubmit }: Props) => {
   const file = form.watch("image");
 
   return (
@@ -94,4 +94,4 @@ const AnalysisForm = ({ form, handleSubmit }: Props) => {
   );
 };
 
-export default AnalysisForm;
+export default FormAnalysis;

@@ -3,10 +3,10 @@ import Navbar from "../components/Navbar";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { uploadSchema, type UploadSchema } from "../schemas/input/UploadSchema";
-import MainSection from "../components/sections/MainSection";
-import HowSection from "../components/sections/HowSection";
 import { useNavigate } from "react-router";
 import Footer from "../components/Footer";
+import SectionMain from "../components/SectionMain";
+import SectionHow from "../components/SectionHow";
 
 type Props = {
   isAuthenticated: boolean;
@@ -28,8 +28,8 @@ const Home = ({ isAuthenticated }: Props) => {
     <>
       <Navbar isAuthenticated={isAuthenticated} />
       <main className="pt-25 md:pt-30 grid grid-cols-1">
-        <MainSection form={form} handleSubmit={handleSubmit} />
-        <HowSection />
+        <SectionMain form={form} handleSubmit={handleSubmit} />
+        <SectionHow />
       </main>
       <Footer />
     </>
