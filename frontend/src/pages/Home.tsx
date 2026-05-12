@@ -7,6 +7,8 @@ import { useNavigate } from "react-router";
 import Footer from "../components/Footer";
 import SectionMain from "../components/SectionMain";
 import SectionHow from "../components/SectionHow";
+import { Loader2 } from "lucide-react";
+import Badge from "../components/Badge";
 
 type Props = {
   isAuthenticated: boolean;

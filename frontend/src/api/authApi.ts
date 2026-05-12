@@ -57,10 +57,12 @@ export const logout = async () => {
   }
 };
 
-export const verifyEmail = async () => {
-  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/verify-email`);
+export const verifyEmail = async (token: string) => {
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/verify-email?token=${token}`);
 
   if (!res.ok) {
     throw new Error("Failed to verify email");
   }
+
+  return res.json();
 };

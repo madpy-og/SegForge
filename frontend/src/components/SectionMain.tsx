@@ -25,7 +25,7 @@ const SectionMain = ({ form, handleSubmit }: Props) => {
           Unggah gambar dan dapatkan hasil analisis dalam hitungan detik
         </p>
       </div>
-      <div className="w-full md:w-170 lg:w-220 h-80 md:h-100 flex flex-col items-center justify-center gap-4 mt-5 bg-cuswhite rounded-2xl shadow-[0px_0px_20px_-12px_rgba(0,0,0,0.3)]">
+      <div className="w-full md:w-170 lg:w-220 h-80 md:h-100 flex flex-col items-center justify-center gap-4 mt-5 bg-cuswhite rounded-2xl border border-cusblack/10 shadow-[0px_0px_20px_-12px_rgba(0,0,0,0.3)]">
         <FormAnalysis form={form} handleSubmit={handleSubmit} />
       </div>
     </section>
