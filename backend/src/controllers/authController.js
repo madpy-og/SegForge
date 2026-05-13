@@ -48,23 +48,20 @@ export const registerUser = async (req, res) => {
     const verificationToken = crypto.randomBytes(32).toString("hex");
 
     await User.create({
-      fullname: fullname,
-      email: email,
+      fullname,
+      email,
       passwordHash: password,
-      verificationToken: verificationToken,
+      verificationToken,
       isVerified: false,
     });
 
-    try {
-      await sendVerificationEmail(email, verificationToken);
-    } catch (emailError) {
-      console.error("Gagal mengirim email saat registrasi:", emailError);
-    }
-
     res.status(201).json({
-      message:
-        "Registrasi berhasil. Silakan periksa kotak masuk atau spam email Anda untuk memverifikasi akun.",
+      message: "User registered successfully. Please check your email to verify your account.",
     });
+
+    sendVerificationEmail(email, verificationToken)
+      .catch(err => console.error("Email verification failed:", err));
+
   } catch (error) {
     res.status(500).json({ message: "internal server error" });
   }
@@ -96,30 +93,20 @@ export const verifyEmail = async (req, res) => {
     const { token } = req.query;
 
     if (!token) {
-      return res
-        .status(400)
-        .json({ message: "Token verifikasi tidak valid atau tidak ditemukan" });
+      return res.status(400).json({ message: "Token verifikasi tidak valid atau tidak ditemukan" });
     }
 
     const user = await User.findOne({ verificationToken: token });
 
     if (!user) {
-      return res
-        .status(400)
-        .json({
-          message: "Token verifikasi tidak valid atau sudah kedaluwarsa",
-        });
+      return res.status(400).json({ message: "Token verifikasi tidak valid atau sudah kedaluwarsa" });
     }
 
     user.isVerified = true;
     user.verificationToken = null;
     await user.save();
 
-    res
-      .status(200)
-      .json({
-        message: "Email berhasil diverifikasi. Anda sekarang dapat login.",
-      });
+    res.status(200).json({ message: "Email berhasil diverifikasi. Anda sekarang dapat login." });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
