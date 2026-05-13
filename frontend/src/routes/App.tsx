@@ -7,7 +7,6 @@ import { checkAuth } from "../api/authApi";
 import History from "../pages/History";
 import Analysis from "../pages/Analysis";
 import VerifyEmail from "../pages/VerifyEmail";
-import { Coba } from "../pages/Coba";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -47,7 +46,6 @@ const App = () => {
           element={<Login setIsAuthenticated={setIsAuthenticated} />}
         />
         <Route path="/verify-email" element={<VerifyEmail />} />
-        <Route path="/coba" element={<Coba />} />
       </Routes>
     </div>
   );
