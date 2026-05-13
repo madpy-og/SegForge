@@ -55,12 +55,13 @@ export const registerUser = async (req, res) => {
       isVerified: false,
     });
 
+    sendVerificationEmail(email, verificationToken)
+      .catch(err => console.error("Email verification failed:", err));
+
     res.status(201).json({
       message: "User registered successfully. Please check your email to verify your account.",
     });
 
-    sendVerificationEmail(email, verificationToken)
-      .catch(err => console.error("Email verification failed:", err));
 
   } catch (error) {
     res.status(500).json({ message: "internal server error" });
