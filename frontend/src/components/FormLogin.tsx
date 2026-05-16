@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import type { UseFormReturn } from "react-hook-form";
 import type { LoginSchema } from "../schemas/input/LoginSchema";
 import Badge from "./Badge";
+import { Loader2 } from "lucide-react";
 
 type Props = {
   form: UseFormReturn<LoginSchema>;
@@ -59,8 +60,18 @@ const FormLogin = ({ form, handleSubmit }: Props) => {
             </p>
           )}
         </div>
-        <button className="primary-button rounded-md text-bd-m md:text-bd w-full h-10 md:h-12 mt-6">
-          Sign In
+        <button
+          disabled={form.formState.isSubmitting}
+          className="primary-button rounded-md text-bd-m md:text-bd w-full h-10 md:h-12 mt-6 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        >
+          {form.formState.isSubmitting ? (
+            <>
+              <Loader2 className="w-5 h-5 animate-spin" />
+              Loading...
+            </>
+          ) : (
+            "Sign In"
+          )}
         </button>
       </form>
       <p className="text-bs-m md:text-bs text-cuslightblack ">
