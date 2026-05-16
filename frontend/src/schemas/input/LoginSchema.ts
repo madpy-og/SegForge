@@ -3,13 +3,13 @@ import { z } from "zod";
 export const loginSchema = z.object({
   email: z
     .string()
-    .min(1, "Email wajib diisi")
-    .email("Format email tidak valid"),
+    .min(1, "Email is required")
+    .email("Invalid email format"),
 
   password: z
     .string()
-    .min(1, "Password wajib diisi")
-    .min(3, "Password minimal 3 karakter"),
+    .min(1, "Password is required")
+    .min(8, "Password must be at least 8 characters"),
 });
 
 export type LoginSchema = z.infer<typeof loginSchema>;

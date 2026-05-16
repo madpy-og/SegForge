@@ -26,6 +26,11 @@ const FormLogin = ({ form, handleSubmit }: Props) => {
             Sign in untuk pengalaman yang lebih baik.
           </p>
         </div>
+        {form.formState.errors.root && (
+          <div className="p-3 bg-red-100 text-danger rounded-md text-bs-m md:text-bs text-center">
+            {form.formState.errors.root.message}
+          </div>
+        )}
         <div className="flex flex-col gap-2">
           <label htmlFor="email" className="label-input">
             EMAIL

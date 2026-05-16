@@ -2,9 +2,9 @@ import { z } from "zod";
 
 export const uploadSchema = z.object({
   image: z
-    .instanceof(File, { message: "File wajib diisi" })
+    .instanceof(File, { message: "File is required" })
     .refine((file) => file.size <= 5 * 1024 * 1024, {
-      message: "Maksimal 5MB",
+      message: "Maximum 5MB",
     })
     .refine((file) => {
       const mimeAllowed = ["image/jpeg", "image/png", "image/webp"].includes(
@@ -15,7 +15,7 @@ export const uploadSchema = z.object({
 
       return mimeAllowed || extAllowed;
     }, {
-      message: "Format harus JPEG, JPG, PNG, atau WEBP",
+      message: "Format must be JPEG, JPG, PNG, or WEBP",
     }),
 });
 

@@ -23,7 +23,8 @@ export const register = async (user: RegisterSchema) => {
   });
 
   if (!res.ok) {
-    throw new Error("Failed to register");
+    const errorData = await res.json().catch(() => ({}));
+    throw new Error(errorData.message || "Failed to register");
   }
 
   return res.json();
@@ -40,7 +41,8 @@ export const login = async (user: LoginSchema) => {
   });
 
   if (!res.ok) {
-    throw new Error("Failed to login");
+    const errorData = await res.json().catch(() => ({}));
+    throw new Error(errorData.message || "Failed to login");
   }
 
   return res.json();

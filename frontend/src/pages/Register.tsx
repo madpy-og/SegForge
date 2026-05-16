@@ -29,6 +29,11 @@ const Register = () => {
       setOpenModal(true);
     } catch (error) {
       console.error(error);
+      if (error instanceof Error) {
+        form.setError("root", { message: error.message });
+      } else {
+        form.setError("root", { message: "Terjadi kesalahan yang tidak terduga" });
+      }
     }
   };
   return (
