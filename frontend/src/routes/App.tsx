@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import { checkAuth } from "../api/authApi";
 import History from "../pages/History";
+import HistoryDetail from "../pages/HistoryDetail";
 import Analysis from "../pages/Analysis";
 import VerifyEmail from "../pages/VerifyEmail";
 
@@ -42,7 +43,7 @@ const App = () => {
         />
         <Route
           path="/history/:id"
-          element={<History isAuthenticated={isAuthenticated} />}
+          element={<HistoryDetail isAuthenticated={isAuthenticated} />}
         />
         <Route path="/register" element={<Register />} />
         <Route

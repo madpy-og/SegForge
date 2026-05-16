@@ -10,6 +10,27 @@ export const getAllAnalysisRecord = async () => {
     );
 
     if (!res.ok) {
+      throw new Error("Failed to get analysis records data");
+    }
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getAnalysisRecordById = async (id: string) => {
+  try {
+    const res = await fetch(
+      `${import.meta.env.VITE_BASE_URL}/analysis-record/${id}`,
+      {
+        credentials: "include",
+      },
+    );
+
+    if (!res.ok) {
       throw new Error("Failed to get analysis record data");
     }
 

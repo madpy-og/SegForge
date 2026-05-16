@@ -17,6 +17,7 @@ const HistoryList = ({ analysisRecord }: Props) => {
         return (
           <HistoryItem
             key={r._id}
+            id={r._id}
             imageUrl={r.imageUrl}
             aiProbability={r.analysisResult.aiProbability}
             createdAt={r.createdAt}
