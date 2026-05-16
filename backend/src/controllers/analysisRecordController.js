@@ -16,6 +16,28 @@ export const getAnalysisRecord = async (req, res) => {
   }
 };
 
+export const getAnalysisRecordById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user._id;
+
+    const analysisRecord = await AnalysisRecord.findOne({
+      _id: id,
+      userId,
+    });
+
+    if (!analysisRecord) {
+      return res.status(404).json({ message: "Analysis record not found" });
+    }
+
+    res
+      .status(200)
+      .json({ analysisRecord, message: "Fetching analysis record successful" });
+  } catch (error) {
+    res.status(500).json({ message: "internal server error" });
+  }
+};
+
 export const addAnalysisRecord = async (req, res) => {
   try {
     const { userId, imageUrl, imageSize, analysisResult, processingDuration } =

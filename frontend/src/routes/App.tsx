@@ -40,6 +40,10 @@ const App = () => {
           path="/history"
           element={<History isAuthenticated={isAuthenticated} />}
         />
+        <Route
+          path="/history/:id"
+          element={<History isAuthenticated={isAuthenticated} />}
+        />
         <Route path="/register" element={<Register />} />
         <Route
           path="/login"
