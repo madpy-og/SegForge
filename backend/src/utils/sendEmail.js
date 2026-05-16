@@ -1,19 +1,13 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendVerificationEmail = async (userEmail, token) => {
   try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
     const verificationUrl = `${process.env.CLIENT_URL}/verify-email?token=${token}`;
 
-    const mailOptions = {
-      from: `"SegForge" <${process.env.EMAIL_USER}>`,
+    const { data, error } = await resend.emails.send({
+      from: "SegForge <onboarding@resend.dev>",
       to: userEmail,
       subject: "Verifikasi Email Akun SegForge Anda",
       html: `
@@ -34,11 +28,15 @@ export const sendVerificationEmail = async (userEmail, token) => {
           <p style="font-size: 12px; color: #999; text-align: center;">Jika Anda tidak merasa mendaftar di SegForge, silakan abaikan email ini.</p>
         </div>
       `,
-    };
+    });
 
-    const info = await transporter.sendMail(mailOptions);
+    if (error) {
+      console.error("Terjadi kesalahan dari Resend API:", error);
+      throw new Error("Gagal mengirim email verifikasi");
+    }
+
     console.log("Email verifikasi berhasil dikirim ke: " + userEmail);
-    return info;
+    return data;
   } catch (error) {
     console.error("Terjadi kesalahan saat mengirim email verifikasi:", error);
     throw new Error("Gagal mengirim email verifikasi");

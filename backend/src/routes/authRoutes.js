@@ -23,8 +23,9 @@ router.post(
   checkUserExistRegister,
   registerUser,
 );
+
+router.get("/verify-email", verifyEmail);
 router.post("/login", validateLogin, checkUserExistLogin, loginUser);
 router.post("/logout", logoutUser);
-router.get("/verify-email", verifyEmail);
 
 export default router;

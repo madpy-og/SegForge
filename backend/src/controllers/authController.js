@@ -56,7 +56,8 @@ export const registerUser = async (req, res) => {
     });
 
     sendVerificationEmail(email, verificationToken)
-      .catch(err => console.error("Email verification failed:", err));
+      .then(() => console.log(`[EMAIL] Verifikasi berhasil dikirim ke: ${email}`))
+      .catch((err) => console.error(`[EMAIL] GAGAL kirim ke ${email}:`, err));
 
     res.status(201).json({
       message: "User registered successfully. Please check your email to verify your account.",
